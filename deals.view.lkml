@@ -8,8 +8,10 @@ view: deals {
   }
 
   dimension: bu {
+    label: "BU"
+    view_label: "BU"
     type: string
-    sql: ${TABLE}.bu ;;
+    sql: cast(${TABLE}.bu as NVARCHAR(3)) ;;
   }
 
   dimension_group: close {
