@@ -31,12 +31,12 @@ view: deals {
 
   dimension: competitor {
     type: string
-    sql: ${TABLE}.competitor ;;
+    sql: cast(${TABLE}.competitor as NVARCHAR(max)) ;;
   }
 
   dimension: customer_name {
     type: string
-    sql: ${TABLE}.customer_name ;;
+    sql: cast(${TABLE}.customer_name as NVARCHAR(max)) ;;
   }
 
   dimension_group: date_lost {
@@ -96,7 +96,7 @@ view: deals {
 
   dimension: for_txt {
     type: string
-    sql: ${TABLE}.for_txt ;;
+    sql: cast(${TABLE}.for_txt as NVARCHAR(max)) ;;
   }
 
   dimension_group: latest_activity {
@@ -132,7 +132,7 @@ view: deals {
 
   dimension: reason_refused {
     type: string
-    sql: ${TABLE}.reason_refused ;;
+    sql: cast(${TABLE}.reason_refused as NVARCHAR(max)) ;;
   }
 
   dimension: responsible_user_id {
@@ -148,7 +148,7 @@ view: deals {
 
   dimension: title {
     type: string
-    sql: ${TABLE}.title ;;
+    sql: cast(${TABLE}.title as NVARCHAR(max)) ;;
   }
 
   dimension: total_price_excl_vat {

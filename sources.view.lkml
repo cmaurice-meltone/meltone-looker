@@ -9,7 +9,7 @@ view: sources {
 
   dimension: name {
     type: string
-    sql: ${TABLE}.name ;;
+    sql: cast(${TABLE}.name as NVARCHAR(max)) ;;
   }
 
   measure: count {
