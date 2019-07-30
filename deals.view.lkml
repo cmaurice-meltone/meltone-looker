@@ -9,7 +9,6 @@ view: deals {
 
   dimension: bu {
     label: "BU"
-    view_label: "BU"
     type: string
     sql: cast(${TABLE}.bu as NVARCHAR(3)) ;;
   }
@@ -120,9 +119,10 @@ view: deals {
     sql: ${TABLE}.phase_id ;;
   }
 
-  dimension: probability {
-    type: number
+  measure: probability {
+    type: average
     sql: ${TABLE}.probability ;;
+    value_format_name: percent_2
   }
 
   dimension: quotation_nr {
@@ -151,9 +151,10 @@ view: deals {
     sql: cast(${TABLE}.title as NVARCHAR(max)) ;;
   }
 
-  dimension: total_price_excl_vat {
-    type: number
+  measure: total_price_excl_vat {
+    type: sum
     sql: ${TABLE}.total_price_excl_vat ;;
+    value_format_name: decimal_0
   }
 
   measure: count {
