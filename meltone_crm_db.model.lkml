@@ -30,8 +30,6 @@ explore: deals {
   }
 }
 
-explore: html_names {}
-
 explore: phases {}
 
 explore: sources {}
