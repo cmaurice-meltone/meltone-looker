@@ -29,7 +29,7 @@ view: users {
 
   dimension: trigram {
     type: string
-    sql: cast(LEFT(${TABLE}.name, 3) as NVARCHAR(max)) ;;
+    sql: LEFT(cast(${TABLE}.name) as NVARCHAR(max)),3) ;;
   }
 
   dimension: team_id {
