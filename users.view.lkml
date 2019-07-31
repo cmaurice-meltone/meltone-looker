@@ -27,6 +27,11 @@ view: users {
     sql: cast(${TABLE}.name as NVARCHAR(max)) ;;
   }
 
+  dimension: trigram {
+    type: string
+    sql: cast(LEFT(${TABLE}.name, 3) as NVARCHAR(max)) ;;
+  }
+
   dimension: team_id {
     type: string
     sql: cast(${TABLE}.team_id as NVARCHAR(max)) ;;
