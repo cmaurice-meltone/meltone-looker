@@ -157,6 +157,12 @@ view: deals {
     value_format_name: decimal_0
   }
 
+  measure: weighted_total_price_excl_vat {
+    type: sum
+    sql: ${TABLE}.total_price_excl_vat * ${TABLE}.probability ;;
+    value_format_name: decimal_0
+  }
+
   measure: count {
     type: count
     drill_fields: [detail*]
