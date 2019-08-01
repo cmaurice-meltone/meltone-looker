@@ -159,7 +159,7 @@ view: deals {
 
   measure: weighted_total_price_excl_vat {
     type: sum
-    sql: ${TABLE}.total_price_excl_vat * ${TABLE}.probability / 100 ;;
+    sql: ${TABLE}.total_price_excl_vat * ${TABLE}.probability / 100.0 ;;
     value_format_name: decimal_0
   }
 
