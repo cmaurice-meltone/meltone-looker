@@ -121,7 +121,7 @@ view: deals {
 
   measure: probability {
     type: average
-    sql: ${TABLE}.probability ;;
+    sql: ${TABLE}.probability / 100;;
     value_format_name: percent_2
   }
 
