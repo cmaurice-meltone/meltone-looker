@@ -154,13 +154,13 @@ view: deals {
   measure: total_price_excl_vat {
     type: sum
     sql: ${TABLE}.total_price_excl_vat ;;
-    value_format_name: decimal_0
+    value_format_name: eur_0
   }
 
   measure: weighted_total_price_excl_vat {
     type: sum
     sql: ${TABLE}.total_price_excl_vat * ${TABLE}.probability / 100.0 ;;
-    value_format_name: decimal_0
+    value_format_name: eur_0
   }
 
   parameter: calculation_mode {
@@ -184,7 +184,7 @@ view: deals {
     {% else %}
       0
     {% endif %} ;;
-    value_format_name: decimal_0
+    value_format_name: eur_0
   }
 
   measure: count {
