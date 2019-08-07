@@ -176,10 +176,11 @@ view: deals {
   }
 
   measure: price {
+    type: sum
     sql: {% if calculation_mode._parameter_value == "'absolute'" %}
-      ${total_price_excl_vat}
+      ${TABLE}.total_price_excl_vat
     {% elsif calculation_mode._parameter_value == "'weighted'" %}
-      ${weighted_total_price_excl_vat}
+       ${TABLE}.total_price_excl_vat * ${TABLE}.probability / 100.0
     {% else %}
       0
     {% endif %} ;;
