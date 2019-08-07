@@ -163,6 +163,28 @@ view: deals {
     value_format_name: decimal_0
   }
 
+  parameter: calculation_mode {
+    type: unquoted
+    allowed_value: {
+      value: "absolute"
+      label: "Absolute"
+    }
+    allowed_value: {
+      value: "weighted"
+      label: "Weighted"
+    }
+  }
+
+  measure: price {
+    sql: {% if calculation_mode._parameter_value == "'absolute'" %}
+      ${total_price_excl_vat}
+    {% elsif calculation_mode._parameter_value == "'weighted'" %}
+      ${weighted_total_price_excl_vat}
+    {% else %}
+      0
+    {% endif %} ;;
+  }
+
   measure: count {
     type: count
     drill_fields: [detail*]
