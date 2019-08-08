@@ -203,6 +203,7 @@ view: deals {
       title,
       phases.name,
       sources.name,
+      users.trigram,
       expected_decision_date,
       total_price_excl_vat,
       weighted_total_price_excl_vat
