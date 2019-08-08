@@ -155,12 +155,14 @@ view: deals {
     type: sum
     sql: ${TABLE}.total_price_excl_vat ;;
     value_format_name: eur_0
+    drill_fields: [drill_details*]
   }
 
   measure: weighted_total_price_excl_vat {
     type: sum
     sql: ${TABLE}.total_price_excl_vat * ${TABLE}.probability / 100.0 ;;
     value_format_name: eur_0
+    drill_fields: [drill_details*]
   }
 
   parameter: calculation_mode {
@@ -185,22 +187,25 @@ view: deals {
       0
     {% endif %} ;;
     value_format_name: eur_0
+    drill_fields: [drill_details*]
   }
 
   measure: count {
     type: count
-    drill_fields: [detail*]
+    drill_fields: [drill_details*]
   }
 
   # ----- Sets of fields for drilling ------
-  set: detail {
+  set: drill_details {
     fields: [
-      id,
+      bu,
       customer_name,
-      phases.id,
+      title,
       phases.name,
-      sources.id,
-      sources.name
+      sources.name,
+      expected_decision_date,
+      total_price_excl_vat,
+      weighted_total_price_excl_vat
     ]
   }
 }
