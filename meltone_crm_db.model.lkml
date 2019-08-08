@@ -30,8 +30,26 @@ explore: deals {
   }
 }
 
-explore: phases {}
+explore: phases {
+  join: deals {
+    type: left_outer
+    sql_on: ${phases.id} = ${deals.phase_id} ;;
+    relationship: one_to_many
+  }
+}
 
-explore: sources {}
+explore: sources {
+  join: deals {
+    type: left_outer
+    sql_on: ${sources.id} = ${deals.source_id} ;;
+    relationship: one_to_many
+  }
+}
 
-explore: users {}
+explore: users {
+  join: deals {
+    type: left_outer
+    sql_on: ${users.id} = ${deals.responsible_user_id} ;;
+    relationship: one_to_many
+  }
+}
