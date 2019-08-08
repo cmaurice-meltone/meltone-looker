@@ -15,6 +15,7 @@ view: deals {
 
   dimension_group: close {
     type: time
+    label: "Closed on"
     timeframes: [
       raw,
       date,
@@ -35,11 +36,13 @@ view: deals {
 
   dimension: customer_name {
     type: string
+    label: "Customer"
     sql: cast(${TABLE}.customer_name as NVARCHAR(max)) ;;
   }
 
   dimension_group: date_lost {
     type: time
+    label: "Lost on"
     timeframes: [
       raw,
       date,
@@ -55,6 +58,7 @@ view: deals {
 
   dimension_group: entry {
     type: time
+    label: "Created on"
     timeframes: [
       raw,
       date,
@@ -70,6 +74,7 @@ view: deals {
 
   dimension_group: expected_decision {
     type: time
+    label: "Expected on"
     timeframes: [
       raw,
       date,
@@ -100,6 +105,7 @@ view: deals {
 
   dimension_group: latest_activity {
     type: time
+    label: "Update on"
     timeframes: [
       raw,
       date,
