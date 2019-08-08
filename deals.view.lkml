@@ -196,6 +196,28 @@ view: deals {
     drill_fields: [drill_details*]
   }
 
+  measure: inactive_days {
+    type: sum
+
+    sql: DATEDIFF(day, ${TABLE}.latest_activity_date, GETDATE())  ;;
+
+    label: "#Days of inactivity"
+
+    value_format_name: decimal_0
+    drill_fields: [drill_details*]
+  }
+
+  measure: days_to_decision {
+    type: sum
+
+    sql: DATEDIFF(day, GETDATE(), ${TABLE}.expected_decision_date)  ;;
+
+    label: "#Days until decision"
+
+    value_format_name: decimal_0
+    drill_fields: [drill_details*]
+  }
+
   measure: count {
     type: count
     drill_fields: [drill_details*]
