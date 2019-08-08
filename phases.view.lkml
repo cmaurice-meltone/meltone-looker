@@ -9,6 +9,7 @@ view: phases {
 
   dimension: name {
     type: string
+    label: "Phase"
     sql: cast(${TABLE}.name as NVARCHAR(max)) ;;
   }
 

@@ -9,6 +9,7 @@ view: sources {
 
   dimension: name {
     type: string
+    label: "Source"
     sql: cast(${TABLE}.name as NVARCHAR(max)) ;;
   }
 

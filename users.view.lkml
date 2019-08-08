@@ -29,6 +29,7 @@ view: users {
 
   dimension: trigram {
     type: string
+    label: "Resp."
     sql: CONCAT(UPPER(LEFT(cast(${TABLE}.name as NVARCHAR(max)), 1)), UPPER(SUBSTRING(cast(${TABLE}.name as NVARCHAR(max)), CHARINDEX(' ', cast(${TABLE}.name as NVARCHAR(max)))+1, 2)));;
   }
 
