@@ -28,6 +28,12 @@ explore: deals {
     sql_on: ${deals.responsible_user_id} = ${users.id} ;;
     relationship: many_to_one
   }
+
+  join: funnel {
+    type: left_outer
+    sql_on: ${deals.id} = ${funnel.deals_id};;
+    relationship: many_to_many
+  }
 }
 
 explore: phases {
@@ -51,5 +57,19 @@ explore: users {
     type: left_outer
     sql_on: ${users.id} = ${deals.responsible_user_id} ;;
     relationship: one_to_many
+  }
+}
+
+explore: funnel {
+  join: deals {
+    type: left_outer
+    sql_on: ${funnel.deals_id} = ${deals.id} ;;
+    relationship: many_to_many
+  }
+
+  join: phases {
+    type: left_outer
+    sql_on: ${funnel.funnel_id} = ${phases.id} ;;
+    relationship: one_to_one
   }
 }
