@@ -3,6 +3,7 @@ view: users {
 
   dimension: id {
     primary_key: yes
+    hidden: yes
     type: number
     sql: ${TABLE}.id ;;
   }
@@ -34,6 +35,7 @@ view: users {
   }
 
   dimension: team_id {
+    hidden: yes
     type: string
     sql: cast(${TABLE}.team_id as NVARCHAR(max)) ;;
   }

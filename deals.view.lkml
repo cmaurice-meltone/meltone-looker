@@ -4,6 +4,7 @@ view: deals {
   dimension: id {
     primary_key: yes
     type: number
+    hidden: yes
     sql: ${TABLE}.id ;;
   }
 
@@ -95,6 +96,7 @@ view: deals {
 
   dimension: for_id {
     type: number
+    hidden: yes
     sql: ${TABLE}.for_id ;;
   }
 
@@ -121,7 +123,7 @@ view: deals {
 
   dimension: phase_id {
     type: number
-    # hidden: yes
+    hidden: yes
     sql: ${TABLE}.phase_id ;;
   }
 
@@ -143,12 +145,13 @@ view: deals {
 
   dimension: responsible_user_id {
     type: number
+    hidden: yes
     sql: ${TABLE}.responsible_user_id ;;
   }
 
   dimension: source_id {
     type: number
-    # hidden: yes
+    hidden: yes
     sql: ${TABLE}.source_id ;;
   }
 
