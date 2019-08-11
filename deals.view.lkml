@@ -160,7 +160,8 @@ view: deals {
     sql: cast(${TABLE}.title as NVARCHAR(max)) ;;
 
     link: {
-      url: "https://app.teamleader.eu/sale_detail.php?id={{deals.id}}"
+      label: "See in Teamleader"
+      url: "https://app.teamleader.eu/sale_detail.php?id={{ deals.id._value }}"
       icon_url: "https://app.teamleader.eu/favicon.ico"
     }
   }
