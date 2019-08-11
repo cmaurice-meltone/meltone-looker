@@ -235,6 +235,7 @@ view: deals {
   # ----- Sets of fields for drilling ------
   set: drill_details {
     fields: [
+      entry_date,
       bu,
       customer_name,
       title,
@@ -243,7 +244,8 @@ view: deals {
       users.trigram,
       expected_decision_date,
       total_price_excl_vat,
-      weighted_total_price_excl_vat
+      weighted_total_price_excl_vat,
+      competitor
     ]
   }
 }
