@@ -158,6 +158,11 @@ view: deals {
   dimension: title {
     type: string
     sql: cast(${TABLE}.title as NVARCHAR(max)) ;;
+
+    link: {
+      url: "https://app.teamleader.eu/sale_detail.php?id={{deals.id}}"
+      icon_url: "https://app.teamleader.eu/favicon.ico"
+    }
   }
 
   measure: total_price_excl_vat {
