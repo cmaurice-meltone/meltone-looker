@@ -61,21 +61,42 @@ view: staffing {
     sql: ${TABLE}.period ;;
   }
 
+  dimension: year {
+    type: number
+    sql: CAST(LEFT(${TABLE}.period, 4) AS INTEGER) ;;
+    value_format_name: decimal_0
+  }
+
+  dimension: month {
+    type: number
+    sql: CAST(RIGHT(${TABLE}.period, 2) AS INTEGER) ;;
+    value_format_name: decimal_0
+  }
+
   dimension: week {
-    type: string
+    type: number
     label: "Week #"
-    sql: CAST(${TABLE}.week AS NVARCHAR(1));;
+    sql: CAST(${TABLE}.week AS INTEGER);;
+  }
+
+  dimension_group: week_start_date {
+    type: time
+    timeframes: [
+      raw,
+      date,
+      week,
+      month,
+      quarter,
+      year
+    ]
+    convert_tz: no
+    datatype: date
+    sql: CAST(CONCAT( LEFT(${TABLE}.period, 4), '-', RIGHT(${TABLE}.period, 2), '-', CAST( (CAST(${TABLE}.week AS INTEGER) - 1) * 7 + 1 AS NVARCHAR(2)) ) AS DATE);;
   }
 
   dimension: max_availability {
     type: number
     sql: ${TABLE}.max_availability ;;
-    value_format_name: decimal_2
-  }
-
-  dimension: staffing {
-    type: number
-    sql: ${TABLE}.staffing_request ;;
     value_format_name: decimal_2
   }
 
