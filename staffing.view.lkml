@@ -104,10 +104,17 @@ view: staffing {
     value_format_name: decimal_2
   }
 
-  measure: staffing_request {
+  measure: week_staffing_request {
     type: sum
-    label: "Staffing request"
+    label: "Staffing request (week)"
     sql: ${TABLE}.staffing_request ;;
+    value_format_name: percent_2
+  }
+
+  measure: month_staffing_request {
+    type: sum
+    label: "Staffing request (month)"
+    sql: ${TABLE}.staffing_request / 4 ;;
     value_format_name: percent_2
   }
 
