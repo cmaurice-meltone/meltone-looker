@@ -2,8 +2,8 @@ view: staffing {
   sql_table_name: dbo.staffing ;;
 
   dimension: employee_code {
-    type: string
     hidden: yes
+    type: string
     sql: ${TABLE}.employee_code ;;
   }
 
@@ -57,23 +57,27 @@ view: staffing {
   }
 
   dimension: period {
+    hidden: yes
     type: string
     sql: ${TABLE}.period ;;
   }
 
   dimension: year {
+    hidden: yes
     type: number
     sql: CAST(LEFT(${TABLE}.period, 4) AS INTEGER) ;;
     value_format_name: decimal_0
   }
 
   dimension: month {
+    hidden: yes
     type: number
     sql: CAST(RIGHT(${TABLE}.period, 2) AS INTEGER) ;;
     value_format_name: decimal_0
   }
 
   dimension: week {
+    hidden: yes
     type: number
     label: "Week #"
     sql: CAST(${TABLE}.week AS INTEGER);;
