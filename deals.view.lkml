@@ -11,7 +11,7 @@ view: deals {
   dimension: bu {
     label: "BU"
     type: string
-    sql: cast(${TABLE}.bu as NVARCHAR(3)) ;;
+    sql: CAST(${TABLE}.bu AS NVARCHAR(3)) ;;
   }
 
   dimension_group: close {
@@ -32,13 +32,13 @@ view: deals {
 
   dimension: competitor {
     type: string
-    sql: cast(${TABLE}.competitor as NVARCHAR(max)) ;;
+    sql: CAST(${TABLE}.competitor AS NVARCHAR(max)) ;;
   }
 
   dimension: customer_name {
     type: string
     label: "Customer"
-    sql: cast(${TABLE}.customer_name as NVARCHAR(max)) ;;
+    sql: CAST(${TABLE}.customer_name AS NVARCHAR(max)) ;;
   }
 
   dimension_group: date_lost {
@@ -102,7 +102,7 @@ view: deals {
 
   dimension: for_txt {
     type: string
-    sql: cast(${TABLE}.for_txt as NVARCHAR(max)) ;;
+    sql: CAST(${TABLE}.for_txt AS NVARCHAR(max)) ;;
   }
 
   dimension_group: latest_activity {
@@ -140,7 +140,7 @@ view: deals {
 
   dimension: reason_refused {
     type: string
-    sql: cast(${TABLE}.reason_refused as NVARCHAR(max)) ;;
+    sql: CAST(${TABLE}.reason_refused AS NVARCHAR(max)) ;;
   }
 
   dimension: responsible_user_id {
@@ -157,7 +157,7 @@ view: deals {
 
   dimension: title {
     type: string
-    sql: cast(${TABLE}.title as NVARCHAR(max)) ;;
+    sql: CAST(${TABLE}.title AS NVARCHAR(max)) ;;
 
     link: {
       label: "See in Teamleader"

@@ -73,3 +73,5 @@ explore: funnel {
     relationship: one_to_one
   }
 }
+
+explore: staffing{}
