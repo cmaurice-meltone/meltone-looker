@@ -1,13 +1,6 @@
 view: staffing {
   sql_table_name: dbo.staffing ;;
 
-  dimension: staffingKey {
-    primary_key: yes
-    hidden: yes
-    type: string
-    sql: CONCAT(${TABLE}.period, CAST(${TABLE}.week AS NVARCHAR(max)), CAST(${TABLE}.project AS NVARCHAR(max)), ${TABLE}.employee_code);;
-  }
-
   dimension: employee_code {
     type: string
     hidden: yes
@@ -17,7 +10,7 @@ view: staffing {
   dimension: employee {
     type: string
     label: "Employee"
-    sql: CAST(${TABLE}.employee AS NVARCHAR(max)) ;;
+    sql: CAST(${TABLE}.employee AS NVARCHAR(60)) ;;
   }
 
   dimension_group: start {
@@ -54,13 +47,13 @@ view: staffing {
 
   dimension: project {
     type: string
-    sql: CAST(${TABLE}.project AS NVARCHAR(max));;
+    sql: CAST(${TABLE}.project AS NVARCHAR(60));;
   }
 
   dimension: staffed {
     type: yesno
     label: "Staffed ?"
-    sql: CAST(${TABLE}.staffed AS NVARCHAR(max)) = 'true';;
+    sql: CAST(${TABLE}.staffed AS NVARCHAR(5)) = 'true';;
   }
 
   dimension: period {
@@ -71,7 +64,7 @@ view: staffing {
   dimension: week {
     type: string
     label: "Week #"
-    sql: CAST(${TABLE}.week AS NVARCHAR(max));;
+    sql: CAST(${TABLE}.week AS NVARCHAR(1));;
   }
 
   dimension: max_availability {
@@ -87,9 +80,8 @@ view: staffing {
   }
 
   measure: staffing_request {
-    type: sum_distinct
+    type: sum
     label: "Staffing request"
-    sql_distinct_key: ${staffingKey};;
     sql: ${TABLE}.staffing_request ;;
     value_format_name: percent_2
   }
