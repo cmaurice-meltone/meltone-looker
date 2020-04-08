@@ -73,9 +73,9 @@ view: deals {
     sql: ${TABLE}.entry_date ;;
   }
 
-  dimension_group: expected_decision {
+  dimension_group: close_date {
     type: time
-    label: "Expected on"
+    label: "Close date"
     timeframes: [
       raw,
       date,
@@ -86,7 +86,7 @@ view: deals {
     ]
     convert_tz: no
     datatype: date
-    sql: ${TABLE}.expected_decision_date ;;
+    sql: ${TABLE}.close_date ;;
   }
 
   dimension: fees {
@@ -219,7 +219,7 @@ view: deals {
   measure: days_to_decision {
     type: sum
 
-    sql: DATEDIFF(day, GETDATE(), ${TABLE}.expected_decision_date)  ;;
+    sql: DATEDIFF(day, GETDATE(), ${TABLE}.close_date)  ;;
 
     label: "#Days until decision"
 
@@ -242,7 +242,7 @@ view: deals {
       phases.name,
       sources.name,
       users.trigram,
-      expected_decision_date,
+      close_date,
       total_price_excl_vat,
       weighted_total_price_excl_vat,
       competitor
