@@ -73,22 +73,6 @@ view: deals {
     sql: ${TABLE}.entry_date ;;
   }
 
-  dimension_group: close_date {
-    type: time
-    label: "Close date"
-    timeframes: [
-      raw,
-      date,
-      week,
-      month,
-      quarter,
-      year
-    ]
-    convert_tz: no
-    datatype: date
-    sql: ${TABLE}.close_date ;;
-  }
-
   dimension: fees {
     type: number
     sql: ${TABLE}.fees ;;
