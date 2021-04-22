@@ -12,9 +12,11 @@ view: sources {
     type: string
     label: "Source"
     sql: cast(${TABLE}.name as NVARCHAR(max)) ;;
+    drill_fields: [source_details*]
   }
 
   measure: count {
+    label: "Nb of Sources"
     type: count
     drill_fields: [detail*]
   }
@@ -27,4 +29,12 @@ view: sources {
       deals.count
     ]
   }
+
+  set: source_details{
+    fields: [
+      name,
+      deals.count
+    ]
+  }
+
 }

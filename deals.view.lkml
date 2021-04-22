@@ -111,12 +111,6 @@ view: deals {
     sql: ${TABLE}.phase_id ;;
   }
 
-  measure: probability {
-    type: average
-    sql: ${TABLE}.probability / 100.0;;
-    value_format_name: percent_2
-  }
-
   dimension: quotation_nr {
     type: number
     sql: ${TABLE}.quotation_nr ;;
@@ -150,6 +144,18 @@ view: deals {
     }
   }
 
+  parameter: calculation_mode {
+      type: unquoted
+      allowed_value: {
+        value: "absolute"
+        label: "Absolute"
+      }
+      allowed_value: {
+        value: "weighted"
+        label: "Weighted"
+      }
+    }
+
   measure: total_price_excl_vat {
     type: sum
     sql: ${TABLE}.total_price_excl_vat ;;
@@ -162,18 +168,6 @@ view: deals {
     sql: ${TABLE}.total_price_excl_vat * ${TABLE}.probability / 100.0 ;;
     value_format_name: eur_0
     drill_fields: [drill_details*]
-  }
-
-  parameter: calculation_mode {
-    type: unquoted
-    allowed_value: {
-      value: "absolute"
-      label: "Absolute"
-    }
-    allowed_value: {
-      value: "weighted"
-      label: "Weighted"
-    }
   }
 
   measure: price {
@@ -200,6 +194,12 @@ view: deals {
     drill_fields: [drill_details*]
   }
 
+  measure: probability {
+      type: average
+      sql: ${TABLE}.probability / 100.0;;
+      value_format_name: percent_2
+    }
+
   measure: days_to_decision {
     type: sum
 
@@ -212,6 +212,7 @@ view: deals {
   }
 
   measure: count {
+    label: "Nb of Deals"
     type: count
     drill_fields: [drill_details*]
   }

@@ -12,9 +12,11 @@ view: phases {
     type: string
     label: "Phase"
     sql: cast(${TABLE}.name as NVARCHAR(max)) ;;
+    drill_fields: [phase_details*]
   }
 
   measure: count {
+    label: "Nb of Phases"
     type: count
     drill_fields: [detail*]
   }
@@ -22,9 +24,19 @@ view: phases {
   # ----- Sets of fields for drilling ------
   set: detail {
     fields: [
+      deals.count,
       id,
       name,
       deals.count
     ]
   }
+
+  set: phase_details{
+    fields: [
+      deals.count,
+      deals.bu,
+      deals.customer_name
+    ]
+  }
+
 }

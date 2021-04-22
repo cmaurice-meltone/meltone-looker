@@ -24,6 +24,7 @@ view: users {
   }
 
   dimension: name {
+    label: "Complete Name"
     type: string
     sql: cast(${TABLE}.name as NVARCHAR(max)) ;;
   }
@@ -51,6 +52,7 @@ view: users {
   }
 
   measure: count {
+    label: "Nb of Users"
     type: count
     drill_fields: [id, name]
   }

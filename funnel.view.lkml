@@ -83,7 +83,7 @@ view: funnel {
 
   dimension: funnel_phase {
     type: string
-    label: "Funnel Phase"
+    label: "Phase"
     sql: ${TABLE}.funnel_phase ;;
   }
 
@@ -94,6 +94,7 @@ view: funnel {
   }
 
   measure: count {
+    hidden:  yes
     type: count
     drill_fields: [detail*]
   }
