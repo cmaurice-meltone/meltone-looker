@@ -11,7 +11,7 @@ datagroup: meltone_crm_db_default_datagroup {
 persist_with: meltone_crm_db_default_datagroup
 
 explore: deals {
-  label: "CRM Monitoring"
+  label: "Activity Monitoring"
   join: phases {
     type: left_outer
     sql_on: ${deals.phase_id} = ${phases.id} ;;
