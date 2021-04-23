@@ -30,6 +30,12 @@ explore: deals {
     relationship: many_to_one
   }
 
+  join: funnel {
+    type: left_outer
+    sql_on: ${deals.id} = ${funnel.deals_id};;
+    relationship: many_to_many
+  }
+
 }
 
 explore: staffing{}
