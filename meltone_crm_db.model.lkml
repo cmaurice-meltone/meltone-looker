@@ -5,7 +5,7 @@ include: "*.view"
 
 datagroup: meltone_crm_db_default_datagroup {
   # sql_trigger: SELECT MAX(id) FROM etl_log;;
-  max_cache_age: "24 hours"
+  max_cache_age: "1 hour"
 }
 
 persist_with: meltone_crm_db_default_datagroup
